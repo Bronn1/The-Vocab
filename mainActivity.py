@@ -10,7 +10,7 @@ from kivy.config import Config
 from kivy.utils import platform
 
 from libs.uix.startingScreenView import StartingScreenView
-from libs.uix.flashcardPlayerView import FlashcardsView
+from libs.uix.flashcardPlayerView import FlashcardsPlayerView
 from libs.uix.flashcardPacksView import FlashcardPacksView
 from libs.uix.flashcardEditorView import FlashcardEditorView
 from libs.presenters.flashcardPacksPresenter import FlashcardPacksPresenter
@@ -57,7 +57,7 @@ class MainActivity(MDApp):
         # creating all screen  views and presenters for them
         self.starting_screen = StartingScreenView()
         self.starting_screen.action_previous.bind(on_press=self.on_action_previous)
-        self.flashcard_player_view = FlashcardsView(font_size)
+        self.flashcard_player_view = FlashcardsPlayerView(font_size)
         self.flashcard_player_presenter = FlashcardPlayerPresenter(self.model, self.flashcard_player_view)
         self.flashcard_packs_view = FlashcardPacksView(self.starting_screen.screen_manager)
         self.flashcard_packs_presenter = FlashcardPacksPresenter(self.model, self.flashcard_packs_view)

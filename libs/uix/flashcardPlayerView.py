@@ -14,7 +14,7 @@ from libs.uix.screenViewInterface import ScreenViewInterface
 from libs.common.appSettings import AppSettings
 
 
-class FlashcardsView(Screen):
+class FlashcardsPlayerView(Screen):
     __metaclass__ = ScreenViewInterface
 
     #events_callback = ObjectProperty(None)
