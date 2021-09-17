@@ -1,0 +1,65 @@
+#:kivy 1.11.1
+#from libs.uix.rangeSliderView import RangeSlider
+
+<FlashcardPackSettingsPopup>:
+    id: edit_popup
+    title: ""
+    size_hint: .9, 0.4
+    font_name: 'comic'
+    title_color: 0.035, 0.031, 0.149, 1
+    auto_dismiss: True
+    background: 'data/images/popup-color.jpg'
+
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            font_name: 'comic'
+            color: 0.035, 0.031, 0.149, 1
+            text: 'Pick the amount of words you want to learn'
+        RangeSlider:
+            id: slider
+            value: 0, 0
+
+        Label:
+            font_name: 'comic'
+            color: 0.035, 0.031, 0.149, 1
+            text: '{}'.format(slider.value[0]) + '-' +'{}'.format(slider.value[1])
+		BoxLayout:
+            Button:
+                id: save_button
+                size_hint: 1.1, 1.1
+                text: "Save Changes"
+                on_release: root.accept_flashcard_pack_settings(root.title, slider.value[0], slider.value[1])
+                visible: True
+                size_hint_x: 1 if self.visible else 0
+                opacity: 1 if self.visible else 0
+                disabled: not self.visible
+                background_color: 0, 0, 0, 0.0
+        		color: 0.035, 0.031, 0.149, 1
+                border_radius: [18]
+				canvas.before:
+				    Color:
+						rgba: 1, 1, 1, 1.0
+					RoundedRectangle:
+						pos: self.pos
+						size: self.size
+						#radius: self.border_radius
+            Button:
+                id: cancel_button
+                size_hint: 1.1, 1.1
+                text: "Cancel Changes"
+                on_release: root.dismiss()
+                visible: True
+                size_hint_x: 1 if self.visible else 0
+                opacity: 1 if self.visible else 0
+                disabled: not self.visible
+                background_color: 0, 0, 0, 0.0
+        		color: 0.035, 0.031, 0.149, 1
+                border_radius: [18]
+				canvas.before:
+				    Color:
+						rgba: 1, 1, 1, 1.0
+					RoundedRectangle:
+						pos: self.pos
+						size: self.size
+						#radius: self.border_radius

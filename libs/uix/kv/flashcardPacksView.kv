@@ -1,0 +1,27 @@
+#:kivy 1.11.1
+
+<FlashcardPacksView>
+	id: screen_flashcard_packs_view
+	#orientation:  "vertical"
+	name: "screen_flashcard_packs_view"
+	canvas.before:
+    	Color:
+    	    rgba: [0.592, 0.745, 0.78, 1.]
+    	Rectangle:
+    	    size: self.size
+
+    BoxLayout:
+        #height: self.parent.height
+        orientation: "vertical"
+        #pos_hint: {'top':0.8}
+        ScrollView:
+            size: self.size
+            size_hint: (1, None)
+            size: (root.width, root.height)
+            GridLayout:
+                id: pack_names_grid
+                cols: 1
+                spacing: 10
+                minimum_height: self.height
+                size_hint_y: None
+                height: sum(x.height/1.5 for x in self.children)

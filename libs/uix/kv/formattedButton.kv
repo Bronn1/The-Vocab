@@ -1,0 +1,71 @@
+#:kivy 1.11.1
+
+<FloatSettingButton@RelativeLayout>:
+    #id: float_button1
+    size_hint: (None, None)
+    text: ''
+    btn_size: (40, 40)
+    size : (54, 54)
+    bg_color: (0.404, 0.227, 0.718, 1.0)
+    Button:
+        id: setting_button
+        pack_name: ''
+        text: root.text
+        markup: True
+        size_hint: (None, None)
+        size: root.btn_size
+        background_normal: 'data/images/settings.png'
+        background_color: (0, 0, 0, 0.0)
+        canvas.before:
+            Color:
+	            rgba: root.bg_color
+		    Ellipse:
+		        source: 'data/images/settings.png'
+		    	pos: self.pos
+		    	size: self.size
+
+<PackActionBar>:
+    id: layout_parent
+    pack_name: ''
+    halign: "left"
+    valign: "middle"
+    size: (1, 60)
+    Button:
+        id: main_button
+        font_size: '18sp'
+        font_name: 'comic'
+        color: 0.035, 0.031, 0.149, 1
+        background_color: (0, 1, 0, 0.0)
+        halign: "left"
+        valign: "middle"
+        size: (1, 50)
+        text: root.pack_name
+        #on_press: root.on_press_main_button(args[0])
+        canvas.before:
+            Color:
+	            rgba: 1, 1, 1, 1.0
+		    RoundedRectangle:
+			    pos: self.pos
+			    size: self.size
+			    #radius: self.border_radius
+	FloatSettingButton:
+	    id: float_button
+        text: ''
+        pos_hint: {'x': 0.88, 'y': .16}
+        #icon: 'data/images/settings.png'
+
+<FormattedButton>:
+    font_size: '18sp'
+    font_name: 'comic'
+    color: 0.035, 0.031, 0.149, 1
+    background_color: (0, 1, 0, 0.0)
+    halign: "left"
+    valign: "middle"
+    size: (1, 50)
+    canvas.before:
+        Color:
+	        rgba: 1, 1, 1, 1.0
+		RoundedRectangle:
+			pos: self.pos
+			size: self.size
+			#radius: self.border_radius

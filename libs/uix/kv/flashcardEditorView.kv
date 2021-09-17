@@ -1,0 +1,190 @@
+#:kivy 1.11.1
+
+<FlashcardEditorView>
+	id: screen_edit_packs_view
+	#orientation:  "vertical"
+	name: "screen_flashcards_editor_view"
+	canvas.before:
+    	Color:
+    	    rgba: [0.592, 0.745, 0.78, 1.]
+    	Rectangle:
+    	    size: self.size
+
+    BoxLayout:
+        #height: self.parent.height
+        orientation: "vertical"
+        #pos_hint: {'top':0.8}
+        ScrollView:
+            size: self.size
+            size_hint: (1, None)
+            size: (root.width, root.height)
+            GridLayout:
+                id: pack_names_grid
+                cols: 1
+                #pos_hint: {'top':0.8}
+                spacing: 10
+
+                minimum_height: self.height
+                size_hint_y: None
+                height: sum(x.height/1.5 for x in self.children)
+
+<FlashcardEditorPopup>:
+    id: edit_popup
+    title: ""
+    container: container
+    size_hint: 1.0, 0.9
+    pos_hint: {"top": 0.96}
+    #size: 400, 275
+    #title_size: 20
+    #title_font: "Verdana"
+    auto_dismiss: True
+    background: 'data/images/popup-color.jpg'
+
+    RelativeLayout:
+        orientation: "vertical"
+        GridLayout:
+            id: container
+            pos_hint: {"top": 1.}
+            cols: 1
+            #height: self.texture_size[1]
+            size_hint_y: None
+            minimum_height: self.height
+            height: sum(x.height for x in self.children)
+            spacing: 20
+            visible: False
+            size_hint_x: 1 if self.visible else 0
+            opacity: 1 if self.visible else 0
+            disabled: not self.visible
+
+        BoxLayout:
+            pos_hint: {"top": 1.07}
+            size_hint: 1.0, .1
+    	    Label:
+    	        id: error_label
+			    #size_hint: .1, .04
+	    	    text_size: self.width-10, None
+                height: self.texture_size[1]
+                text: "Enter the word"
+                markup: True
+                color: 0.035, 0.031, 0.149, 1
+                #pos_hint: {'center_x': 0.5, 'top':0}
+                visible: False
+                size_hint_x: 1 if self.visible else 0
+                opacity: 1 if self.visible else 0
+                disabled: not self.visible
+        BoxLayout:
+            #pos_hint: {"top": 0.96}
+            size_hint: 1.0, .1
+            Button:
+                id: save_button
+                #size_hint: 0.9, 1.7
+                text: "Save Changes"
+                on_release: root.parent_screen.add_flashcard_pressed_callback(root.flashcard_pack_name)
+                visible: True
+                size_hint_x: 1 if self.visible else 0
+                opacity: 1 if self.visible else 0
+                disabled: not self.visible
+                background_color: 0, 0, 0, 0.0
+        		color: 0.035, 0.031, 0.149, 1
+                border_radius: [18]
+				canvas.before:
+				    Color:
+						rgba: 1, 1, 1, 1.0
+					RoundedRectangle:
+						pos: self.pos
+						size: self.size
+						#radius: self.border_radius
+            Button:
+                id: cancel_button
+                #size_hint: 0.9, 1.7
+                text: "Cancel Changes"
+                on_release: root.dismiss()
+                visible: True
+                size_hint_x: 1 if self.visible else 0
+                opacity: 1 if self.visible else 0
+                disabled: not self.visible
+                background_color: 0, 0, 0, 0.0
+        		color: 0.035, 0.031, 0.149, 1
+                border_radius: [18]
+				canvas.before:
+				    Color:
+						rgba: 1, 1, 1, 1.0
+					RoundedRectangle:
+						pos: self.pos
+						size: self.size
+						#radius: self.border_radius
+
+        BoxLayout:
+            orientation: 'vertical'
+            pos_hint: {"top": 0.96}
+            size_hint: 1.0, .4
+            Button:
+                id: add_button
+                text: "Add new word"
+                #size_hint: .8, .2
+                #halign: "left"
+                on_press: root.flashcard_editor_view_state()
+                #size_hint: .8, 1.7
+                visible: True
+                size_hint_x: 1 if self.visible else 0
+                size_hint_y: 1 if self.visible else 0
+                opacity: 1 if self.visible else 0
+                disabled: not self.visible
+                background_color: 0, 0, 0, 0.0
+        		color: 0.035, 0.031, 0.149, 1
+                border_radius: [18]
+				canvas.before:
+				    Color:
+						rgba: 1, 1, 1, 1.0
+					RoundedRectangle:
+						pos: self.pos
+						size: self.size
+						#radius: self.border_radius
+            Button:
+                id: edit_button
+                #size_hint: .8, .2
+                text: "Edit words"
+                on_press: root.existing_flashcards_in_pack()
+                visible: True
+                size_hint_x: 1 if self.visible else 0
+                size_hint_y: 1 if self.visible else 0
+                opacity: 1 if self.visible else 0
+                disabled: not self.visible
+                background_color: 0, 0, 0, 0.0
+        		color: 0.035, 0.031, 0.149, 1
+                border_radius: [18]
+				canvas.before:
+				    Color:
+						rgba: 1, 1, 1, 1.0
+					RoundedRectangle:
+						pos: self.pos
+						size: self.size
+						#radius: self.border_radius
+
+<PickExistingFlashcardPopup>:
+    id: pick_existing_flashcard_popup
+    size_hint: .6, 0.9
+    auto_dismiss: True
+    title: ""
+    background: 'data/images/popup-color.jpg'
+    BoxLayout:
+        ScrollView:
+            GridLayout:
+                id: flashcards_view
+                size_hint_y: None
+                cols: 1
+                #row_default_height: root.height*0.2
+                #height: self.minimum_height
+                height: sum(x.height for x in self.children)
+                spacing: 10
+
+
+
+<PopupLabelCell>
+    size_hint: (None, None)
+    height: 30
+    text_size: self.size
+    color: 0.035, 0.031, 0.149, 1
+    halign: "left"
+    valign: "middle"
+

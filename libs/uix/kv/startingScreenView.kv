@@ -1,0 +1,116 @@
+#:kivy 1.11.1
+
+#<Button@ButtonBehavior+AsyncImage>
+#<DesignedButton@ButtonBehavior>
+
+<StartingScreenView>
+	ActionBar:
+		id: action_bar
+		size_hint: 1., .05
+		canvas:
+			Color:
+				rgb: root.color_blue
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		ActionView:
+			#size_hint: .1, .1
+			ActionPrevious:
+				id: action_previous
+                title: ""
+				visible: False
+				opacity: 1 if self.visible else 0
+				disabled: not self.visible
+				#size_hint: .1, .1
+				#app_icon: "Data/Images/previous_app_icon.png"
+				#previous_image: "Data/Images/previous_image.png"
+				with_previous: True
+				#on_press: root.events_callback("onPrevious")
+				app_icon: ''
+                app_icon_width: 0
+                app_icon_height: 0
+	CustomScreenManager:
+		id: screen_manager
+		# сurrent start screen
+		Screen:
+			id: starting_screen
+			name: "startingScreen"
+			background_color: 0.592, 0.745, 0.98, 1.
+			canvas.before:
+				Color:
+					rgba: 0.592, 0.745, 0.98, 1.
+				Rectangle:
+					pos: self.pos
+					size: self.size
+			GridLayout:
+				id: menu_buttons
+				size_hint: 1, 0.50
+				pos_hint: {"top": 1.0}
+				cols: 1
+				spacing: 20
+				padding: 90
+				canvas.before:
+					Color:
+						rgba: 0.592, 0.745, 0.98, 1.
+					Rectangle:
+						pos: self.pos
+						size: self.size
+				Button:
+					id: open_editor
+					font_name: 'comic'
+					text: 'Create\Edit pack'
+                    #height: 50
+					#text_size: self.width-10, None
+        			font_size: '18sp'
+        			halign: "center"
+        		    background_color: 0, 0, 0, 0.0
+        			color: 0.035, 0.031, 0.149, 1
+                    background_normal: ''
+        			size_hint: 0.2, None
+					on_press: root.on_switch_screen_buttons('screen_flashcards_editor_view')
+					border_radius: [18]
+					canvas.before:
+					    Color:
+						    rgba: 1, 1, 1, 1.0
+					    RoundedRectangle:
+						    pos: self.pos
+						    size: self.size
+						    #radius: self.border_radius
+				Button:
+					id: open_flashcard_packs
+					font_name: 'comic'
+					text: 'play flashcards'
+					#text_size: self.width-10, None
+                    #height: self.texture_size[1]
+                    #height: 50
+                    size_hint: 0.2, None
+                    halign: "center"
+                    color: 0.035, 0.031, 0.149, 1
+                    background_color: 0, 0, 0, 0.0
+                    background_normal: ''
+					font_size: '18sp'
+					on_press: root.on_switch_screen_buttons('screen_flashcard_packs_view')
+					border_radius: [18]
+					canvas.before:
+					    Color:
+						    rgba: 1, 1, 1, 1.0
+					    RoundedRectangle:
+						    pos: self.pos
+						    size: self.size
+						    #radius: self.border_radius
+
+            Label:
+                id: label_hint
+				size_hint: 1, .1
+				text: "Learned words "
+				font_name: 'comic'
+				pos_hint: {"top": .1}
+				background_normal: ''
+				markup: True
+				border: (30, 30, 30, 30)
+				canvas.before:
+					Color:
+						rgba: 0.157, 0.455, 0.753, 1.0
+					Rectangle:
+						pos: self.pos
+						size: self.size
