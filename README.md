@@ -1,7 +1,7 @@
 # The-Vocab
 
 ## About
-Cross-platform mobile and desktop flashcard app for language learning with ability to listen pronunciation.
+Cross-platform mobile and desktop flashcard app for language learning with ability to listen to pronunciation.
 Currently supports only 3 languages. Can be built up with buildozer for IOS/Android.
 
 ## Installation
