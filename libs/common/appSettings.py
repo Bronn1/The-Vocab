@@ -1,6 +1,6 @@
 
 class AppSettings:
-    Debug = True
+    Debug = False
 
     # time limits to update state of memorization of a flashcard with a word
     Memorization_soft_update_time = 60 * 60 * 7  # 9 hours

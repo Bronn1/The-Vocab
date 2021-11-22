@@ -43,7 +43,7 @@ class MainActivity(MDApp):
         super(MainActivity, self).__init__(**kvargs)
         # bind keyboard events to the handler
         Window.bind(on_key_up=self._on_keyboard_down)
-        self._VERSION = 'b1.1.1'
+        self._VERSION = '1.1'
         self._set_defaults_config_setting_if_not_exist()
 
         font_size = 16
@@ -96,7 +96,7 @@ class MainActivity(MDApp):
         setting up some required config values
         :return:
         """
-        Config.setdefaults('TheVocabApp', {'Version': 'b1.1.0'})
+        Config.setdefaults('TheVocabApp', {'Version': '1.0'})
         Config.setdefaults('FlashcardView', { 'HideTranslate': 'False' })
         Config.setdefaults('FlashcardView', { 'MutedSound': 'False' })
         Config.setdefaults('FlashcardActionBar', {'LearnedWords': -1})
@@ -107,7 +107,7 @@ class MainActivity(MDApp):
         :return:
         """
         if Config.get('TheVocabApp', 'Version') != self._VERSION:
-            if self._VERSION == 'b1.1.1':
+            if self._VERSION == '1.1':
                 Upgrade_db.replace_db_file_b1_1_1(self.user_data_dir)
                 Config.set('TheVocabApp', 'Version', str(self._VERSION))
                 Config.write()
