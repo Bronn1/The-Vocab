@@ -2,10 +2,24 @@
 
 ## About
 Cross-platform mobile and desktop flashcard app for language learning with ability to listen to pronunciation.
-Currently supports only 3 languages. Can be built up with buildozer for IOS/Android.
+Currently supports only 3 languages (English, Russian, Spanish). Can be built up with buildozer for IOS/Android.
 
-## Installation
-1. Requires Python 3.6 or higher.
+## Installation (Windows)
+1. Requires Python 3.6—3.9
+2. Install kivy:
+```
+python -m pip install kivy[base] kivy_examples
+```
+3. Install kivymd:
+```
+python -m pip install kivymd
+```
+4. Just run: 
+```
+python main.py
+```
+## Installation (Linux)
+1. Requires Python 3.6—3.9
 2. Install kivy:
 ```
 pip install kivy[base] kivy_examples
@@ -18,6 +32,7 @@ pip install kivymd
 ```
 python main.py
 ```
+
 ## Some screenshots
 
 1. Main menu:
