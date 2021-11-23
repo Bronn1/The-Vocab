@@ -8,11 +8,11 @@ Currently supports only 3 languages (English, Russian, Spanish). Can be built up
 1. Requires Python 3.6—3.9
 2. Install kivy:
 ```
-py -m pip install kivy[base] kivy_examples
+python -m pip install kivy[base] kivy_examples
 ```
 3. Install kivymd:
 ```
-py -m pip install kivymd
+python -m pip install kivymd
 ```
 4. Just run: 
 ```
